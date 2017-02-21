@@ -16,7 +16,7 @@ $(function(){
         if(videoUrls != null && videoUrls.length > 0) {
             $.ajax({
                 type: "POST",
-                url: 'http://192.168.1.33:8080/transcode-server/action/transcodeurl?account=5555&ratio=320*240',
+                url: 'http://61.174.9.150:8080/transcode-server/action/transcodeurl?account=5555&ratio=320*240',
                 contentType:'application/json; charset=utf-8',
                 data:JSON.stringify(videoUrls),
                 cache:false,
@@ -38,7 +38,7 @@ $(function(){
             });
         } else {
             $.ajax({
-                url: 'http://192.168.1.33:8080/transcode-server/action/transcodefile?account=5555&ratio=320*240',
+                url: 'http://61.174.9.150:8080/transcode-server/action/transcodefile?account=5555&ratio=320*240',
                 type: 'POST',
                 cache: false,
                 data: formData,
