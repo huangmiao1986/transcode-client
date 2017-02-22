@@ -22,6 +22,29 @@
             <input id="file" type="file" name="file" style="margin-top: 10px;"/>
         </div>
 
+        <div class="form-group">
+            <label class="label label-default" for="file">分辨率</label><span id="ratioShow" style="margin-left: 10px;">320*240</span>
+        </div>
+
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>
+                        <label class="label label-info" for="file" style="width: 50px;margin-left: 10px;">横向像素</label>
+                    </td>
+                    <td>
+                        <input id="widthRatio" type="number" class="form-control" style="width: 80px;margin-left: 10px;" placeholder="320"/>
+                    </td>
+                    <td>
+                        <label class="label label-info" for="file" style="width: 50px;margin-left: 10px;">纵向像素</label>
+                    </td>
+                    <td>
+                        <input id="heightRatio" type="number" class="form-control" style="width: 80px;margin-left: 10px;" placeholder="240"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
         <div id="showTransCode" style="display:none;">
             <div class="form-group">
                 <label class="label label-default" for="picUrl">视频截图</label>
@@ -35,6 +58,10 @@
         </div>
         <div style="width: 100%;text-align: center;">
             <input id="transCodeId" class="btn btn-primary" type="button" value="开始转码"/>
+            <select id="vcodec" class="btn btn-primary">
+                <option value="libx264">H264</option>
+                <option value="libx265">H265</option>
+            </select>
         </div>
 
     </div>

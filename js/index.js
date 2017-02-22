@@ -1,7 +1,19 @@
 
 $(function(){
+
+    $("#widthRatio").on('change',function(){
+        $("#ratioShow").html($(this).val()+'*'+$("#heightRatio").val());
+    });
+
+    $("#heightRatio").on('change',function(){
+        $("#ratioShow").html($("#widthRatio").val()+'*'+$(this).val());
+    });
+
     //保存自定义视频封面图片
     $("#transCodeId").on("click", function() {
+
+        var widthRatio = $("#widthRatio").val();
+        var heightRatio = $("#heightRatio").val();
 
         $(this).val('转码中,请稍候...');
 
@@ -13,10 +25,17 @@ $(function(){
         var formData = new FormData();
         formData.append('file', $('#file')[0].files[0]);
 
+        var ratio = 320*240;
+        if(widthRatio != '' && widthRatio >0 && heightRatio != '' && heightRatio >0) {
+            ratio = widthRatio+'*'+heightRatio;
+        }
+
+        var vcodec = $('#vcodec').val();
+
         if(videoUrls != null && videoUrls.length > 0) {
             $.ajax({
                 type: "POST",
-                url: 'http://61.174.9.150:8080/transcode-server/action/transcodeurl?account=5555&ratio=320*240',
+                url: 'http://61.174.9.150:18080/transcode-server/action/transcodeurl?account=5555&ratio='+ratio+'&vcodec='+vcodec,
                 contentType:'application/json; charset=utf-8',
                 data:JSON.stringify(videoUrls),
                 cache:false,
@@ -38,7 +57,7 @@ $(function(){
             });
         } else {
             $.ajax({
-                url: 'http://61.174.9.150:8080/transcode-server/action/transcodefile?account=5555&ratio=320*240',
+                url: 'http://61.174.9.150:18080/transcode-server/action/transcodefile?account=5555&ratio='+ratio+'&vcodec='+vcodec,
                 type: 'POST',
                 cache: false,
                 data: formData,
